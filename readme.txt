@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=j_col
 Tags: HTML5, gallery, Google+, responsive, pop-out
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 0.1
+Stable tag: 0.1.1
 License: GPLv2 or later
 
 
@@ -15,10 +15,11 @@ Change the native Wordpress gallery to a gallery that nicely fits your images in
 
 If the plugin is activated, all of your Wordpress galleries will be styled like a Google+ gallery.
 
-Main features inclucde:
+Main features include:
+
 1. The gallery will fit in nicely in a responsive web design, as the grid is recalculated when scaling the window.
 1. By default the images will pop out a whenever you move the cursor over them. The z-indexes are updating so that the pop-out images are always on top.
-1. The animation speed, scaling, margins and max row height will be customized in the [gallery] shortcode, in the next version of Responsive Gallery Grid.
+1. The animation speed, scaling, margins and max row height will be customized in the `[gallery]` shortcode, in the next version of Responsive Gallery Grid.
 
 A live example can be viewed at http://bdwm.be/rgg/?page_id=2
 
@@ -66,7 +67,10 @@ Sure. Please start a support thread for any of your requests.
 
 == Changelog ==
 
-= 1.0 (april 26, 2013) =
+= 0.1 (april 26, 2013) =
 * First release
+
+= 0.1.1 (april 27, 2013) =
+* updated the Plugin Info page
 
 == Arbitrary section ==
