@@ -23,7 +23,7 @@ Main features include:
 
 A live example can be viewed at http://bdwm.be/rgg/sample-page/
 
-Documentation available at http://bdwm.be/rgg/shortcode-settings/
+Documentation available at http://bdwm.be/rgg/shortcode-parameters/
 
 == Installation ==
 
@@ -31,11 +31,11 @@ Documentation available at http://bdwm.be/rgg/shortcode-settings/
 1. Activate the plugin through the 'Plugins' menu in Wordpress Admin
 1. You're done!
 
-= Finetuning (Will be available in the next version of Responsive Gallery Grid) =
+= Finetuning =
 
 If you want to finetune the options per gallery you can add some parameters to the gallery shortcode (from text editor).
 
-Documentation available at http://bdwm.be/rgg/shortcode-settings/
+Documentation available at http://bdwm.be/rgg/shortcode-parameters/
 
 More options comming soon! Please start a support thread for any of your requests.
 
@@ -48,7 +48,7 @@ One plugin I know that will work right out of the box is jQuery ColorBox. http:/
 
 = How can I further configure and modify the gallery to my needs? =
 
-Please take a look here: http://bdwm.be/rgg/shortcode-settings/
+Please take a look here: http://bdwm.be/rgg/shortcode-parameters/
 
 Need anything else? Please start a support thread?
 
