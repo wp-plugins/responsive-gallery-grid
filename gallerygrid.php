@@ -6,7 +6,7 @@ Plugin URI: http://bdwm.be/rgg
 Description: Converts the default wordpress gallery to a Google+ styled image gallery grid, where the images are scaled to fill the gallery container, while maintaining image aspect ratio's.
 Author: Jules Colle, BDWM
 Author URI: http://bdwm.be
-Version: 1.0.0
+Version: 1.1
 
 Copyright 2013 Jules Colle (email : jules@bdwm.be)
 
@@ -24,27 +24,31 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 */
-wp_register_style( 'rgg-style', plugins_url('css/style.css', __FILE__) );
-wp_enqueue_style( 'rgg-style' );
 
-wp_enqueue_script('imagesloaded', plugins_url( 'js/jquery.imagesloaded.min.js' , __FILE__ ), array('jquery'), '1', false );
-wp_enqueue_script('gallerygrid', plugins_url( '/js/jquery.gallerygrid.js' , __FILE__ ), array('imagesloaded'), '1.0.0', false );
-wp_enqueue_script('rgg-main', plugins_url( '/js/main.js' , __FILE__ ), array('gallerygrid'), '1.0.0', false );
+$all_settings = array();
 
-function gagr_gallery_shortcode($attr) {
-	extract(shortcode_atts(array(
-        'type' => 'gagr',
-        'class' => 'imagegrid',
-        'rel' => 'imagegrid_group',
+function rgg_gallery_shortcode($attr) {
+	global $all_settings;
+	$settings_arr = shortcode_atts(array(
+        'type' => 'rgg',
+        'class' => '',
+        'rel' => 'rgg',
         'image_size' => 'medium',
-        'ids' => ''
-    ), $attr));
+        'ids' => '',
+        'margin' => 10,
+        'scale' => 1.2,
+        'maxrowheight' => 200,
+        'intime' => 100,
+        'outtime' => 100
+    ), $attr);
 	
-	if ($type == 'default_gallery') {
+	extract($settings_arr);
+	$all_settings[] = $settings_arr;
+	
+	if ($type == 'native') {
 		return gallery_shortcode($attr);
 	} else {
 		
-		// TODO: enque my javascript file here.
 		
 		$media_ids = explode(',', $ids);
 		if (count($media_ids) == 0) {
@@ -53,7 +57,7 @@ function gagr_gallery_shortcode($attr) {
 		
 		ob_start();
 ?>
-		<div class="<?php echo $class ?>">
+		<div class="rgg_imagegrid <?php echo $class ?>" rgg_id="<?php echo count($all_settings) ?>">
 			
 <?php
 		foreach($media_ids as $mid) {
@@ -71,5 +75,26 @@ function gagr_gallery_shortcode($attr) {
 		return ob_get_clean();
 	}
 }
+
 remove_shortcode('gallery', 'gallery_shortcode');
-add_shortcode('gallery', 'gagr_gallery_shortcode');
+add_shortcode('gallery', 'rgg_gallery_shortcode');
+
+
+function rgg_register_scripts() {
+	//echo "RGG_REGISTER_SCRIPTS";
+	global $all_settings;
+	
+	// enqueue css
+	wp_register_style( 'rgg-style', plugins_url('css/style.css', __FILE__) );
+	wp_enqueue_style( 'rgg-style' );
+	
+	// enqueue scripts
+	wp_enqueue_script('imagesloaded', plugins_url( 'js/jquery.imagesloaded.min.js' , __FILE__ ), array('jquery'), '1', false );
+	wp_enqueue_script('gallerygrid', plugins_url( '/js/jquery.gallerygrid.js' , __FILE__ ), array('imagesloaded'), '1.0.0', false );
+	wp_enqueue_script('rgg-main', plugins_url( '/js/main.js' , __FILE__ ), array('gallerygrid'), '1.0.0', false );
+	
+	// pass shortcode parameters to main script also
+	wp_localize_script( 'rgg-main', 'rgg_params', $all_settings );	
+}
+
+add_action('wp_footer', 'rgg_register_scripts');

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=j_col
 Tags: HTML5, gallery, Google+, responsive, pop-out
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 0.1.1
+Stable tag: 1.1
 License: GPLv2 or later
 
 
@@ -19,9 +19,11 @@ Main features include:
 
 1. The gallery will fit in nicely in a responsive web design, as the grid is recalculated when scaling the window.
 1. By default the images will pop out a whenever you move the cursor over them. The z-indexes are updating so that the pop-out images are always on top.
-1. The animation speed, scaling, margins and max row height will be customized in the `[gallery]` shortcode, in the next version of Responsive Gallery Grid.
+1. The animation speed, scaling, margins and max row height are customizable in the `[gallery]` shortcode.
 
-A live example can be viewed at http://bdwm.be/rgg/?page_id=2
+A live example can be viewed at http://bdwm.be/rgg/sample-page/
+
+Documentation available at http://bdwm.be/rgg/shortcode-settings/
 
 == Installation ==
 
@@ -31,25 +33,24 @@ A live example can be viewed at http://bdwm.be/rgg/?page_id=2
 
 = Finetuning (Will be available in the next version of Responsive Gallery Grid) =
 
-If you want to finetune the options per gallery you can add the folowing parameters to the gallery shortcode (from text editor)
+If you want to finetune the options per gallery you can add some parameters to the gallery shortcode (from text editor).
 
-1. `type = rgg*|native`
-1. `class = imagegrid*|CLASS`
-1. `rel = rgg_group*|REL`
-1. `image_size = thumbnail|medium*|large|full|SIZE`
-1. `ids = IDS`
-
-Legend:
-
-* \* = default value
-* CLASS = a class you would like to add to the grid container.
-* REL = the rel attribute you would like to add to the anchor tags. (Used by some light boxes, like Colorbox, to group the images.)
-* SIZE = any other image size that is defined with `add_image_size()` http://codex.wordpress.org/Function_Reference/add_image_size.
-* IDS = comma seperated list of the media IDs of the images you want to appear in the gallery.
+Documentation available at http://bdwm.be/rgg/shortcode-settings/
 
 More options comming soon! Please start a support thread for any of your requests.
 
 == Frequently Asked Questions ==
+
+= How do I add a lightbox to the gallery? =
+
+Any way you would add a lightbox to the native wordpress gallery will work for Responsive Gallery Grid.
+One plugin I know that will work right out of the box is jQuery ColorBox. http://wordpress.org/extend/plugins/jquery-colorbox/
+
+= How can I further configure and modify the gallery to my needs? =
+
+Please take a look here: http://bdwm.be/rgg/shortcode-settings/
+
+Need anything else? Please start a support thread?
 
 = Will there be added more options? =
 
@@ -67,10 +68,15 @@ Sure. Please start a support thread for any of your requests.
 
 == Changelog ==
 
-= 0.1 (april 26, 2013) =
-* First release
+= 1.1 (May 2, 2013) =
+* Added a bunch of paramaters to the shortcode
+* updated plugin info page
+* update plugin website http://bdwm.be/rgg
 
-= 0.1.1 (april 27, 2013) =
+= 0.1.1 (April 27, 2013) =
 * updated the Plugin Info page
+
+= 0.1 (April 26, 2013) =
+* First release
 
 == Arbitrary section ==

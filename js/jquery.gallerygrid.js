@@ -61,7 +61,7 @@
             $tiles.css({'margin-right' : margin, 'height':maxrowheight, 'width' : 'auto', position:'relative'}); // reset the margins.
             
             $container.width('100%');
-            var containerwidth = jQuery('.imagegrid').width();
+            var containerwidth = jQuery('.rgg_imagegrid').width();
             //console.log('container: ' + containerwidth);
             
             var rows = [];
