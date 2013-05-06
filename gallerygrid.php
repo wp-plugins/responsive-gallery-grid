@@ -6,7 +6,7 @@ Plugin URI: http://bdwm.be/rgg
 Description: Converts the default wordpress gallery to a Google+ styled image gallery grid, where the images are scaled to fill the gallery container, while maintaining image aspect ratio's.
 Author: Jules Colle, BDWM
 Author URI: http://bdwm.be
-Version: 1.1
+Version: 1.2
 
 Copyright 2013 Jules Colle (email : jules@bdwm.be)
 
@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 $all_settings = array();
 
-function rgg_gallery_shortcode($attr) {
+function rgg_gallery_shortcode($output, $attr) {
 	global $all_settings;
 	$settings_arr = shortcode_atts(array(
         'type' => 'rgg',
@@ -46,7 +46,7 @@ function rgg_gallery_shortcode($attr) {
 	$all_settings[] = $settings_arr;
 	
 	if ($type == 'native') {
-		return gallery_shortcode($attr);
+		return ''; //gallery_shortcode($attr);
 	} else {
 		
 		
@@ -65,23 +65,29 @@ function rgg_gallery_shortcode($attr) {
 			$link = $info[0];
 			$img = wp_get_attachment_image($mid, $image_size);
 			echo "<a rel=\"$rel\" href=\"$link\">$img</a>";
-			//echo $link;
+			// echo wp_get_attachment_link($mid, 'medium', true);
+			// echo $link;
 		}
 ?>
 		</div>
 		<div style="clear:both"></div>
 <?php
+		//possible solution to get rid of p-tags.
+		//remove_filter( 'the_content', 'wpautop' );
+		//add_filter( 'the_content', 'wpautop' , 12);
+		// return ob_get_clean();
 		
-		return ob_get_clean();
+		// better solution to get rid of p-tags:
+		return do_shortcode('[raw]'.ob_get_clean().'[/raw]');
 	}
 }
 
-remove_shortcode('gallery', 'gallery_shortcode');
-add_shortcode('gallery', 'rgg_gallery_shortcode');
+//remove_shortcode('gallery', 'gallery_shortcode');
+//add_shortcode('gallery', 'rgg_gallery_shortcode');
+add_filter( 'post_gallery', 'rgg_gallery_shortcode', 9, 2 );
 
 
 function rgg_register_scripts() {
-	//echo "RGG_REGISTER_SCRIPTS";
 	global $all_settings;
 	
 	// enqueue css
