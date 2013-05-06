@@ -6,7 +6,7 @@ Plugin URI: http://bdwm.be/rgg
 Description: Converts the default wordpress gallery to a Google+ styled image gallery grid, where the images are scaled to fill the gallery container, while maintaining image aspect ratio's.
 Author: Jules Colle, BDWM
 Author URI: http://bdwm.be
-Version: 1.2
+Version: 1.2.1
 
 Copyright 2013 Jules Colle (email : jules@bdwm.be)
 
@@ -63,8 +63,9 @@ function rgg_gallery_shortcode($output, $attr) {
 		foreach($media_ids as $mid) {
 			$info = wp_get_attachment_image_src( $mid, 'large' );
 			$link = $info[0];
+			$title = get_post_field('post_excerpt', $mid);
 			$img = wp_get_attachment_image($mid, $image_size);
-			echo "<a rel=\"$rel\" href=\"$link\">$img</a>";
+			echo "<a rel=\"$rel\" href=\"$link\" title=\"$title\">$img</a>";
 			// echo wp_get_attachment_link($mid, 'medium', true);
 			// echo $link;
 		}
