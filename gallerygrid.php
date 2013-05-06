@@ -6,7 +6,7 @@ Plugin URI: http://bdwm.be/rgg
 Description: Converts the default wordpress gallery to a Google+ styled image gallery grid, where the images are scaled to fill the gallery container, while maintaining image aspect ratio's.
 Author: Jules Colle, BDWM
 Author URI: http://bdwm.be
-Version: 1.2.1
+Version: 1.2.2
 
 Copyright 2013 Jules Colle (email : jules@bdwm.be)
 
@@ -39,7 +39,8 @@ function rgg_gallery_shortcode($output, $attr) {
         'scale' => 1.2,
         'maxrowheight' => 200,
         'intime' => 100,
-        'outtime' => 100
+        'outtime' => 100,
+        'captions' => 'title'
     ), $attr);
 	
 	extract($settings_arr);
@@ -63,9 +64,10 @@ function rgg_gallery_shortcode($output, $attr) {
 		foreach($media_ids as $mid) {
 			$info = wp_get_attachment_image_src( $mid, 'large' );
 			$link = $info[0];
-			$title = get_post_field('post_excerpt', $mid);
+			$title = $captions == 'off' ? '' : get_post_field('post_excerpt', $mid);
+			$title_esc = htmlentities($title);
 			$img = wp_get_attachment_image($mid, $image_size);
-			echo "<a rel=\"$rel\" href=\"$link\" title=\"$title\">$img</a>";
+			echo "<a rel=\"$rel\" href=\"$link\" title=\"$title_esc\">$img</a>";
 			// echo wp_get_attachment_link($mid, 'medium', true);
 			// echo $link;
 		}
@@ -78,8 +80,8 @@ function rgg_gallery_shortcode($output, $attr) {
 		//add_filter( 'the_content', 'wpautop' , 12);
 		// return ob_get_clean();
 		
-		// better solution to get rid of p-tags:
-		return do_shortcode('[raw]'.ob_get_clean().'[/raw]');
+		// better solution to get rid of p-tags: [raw][/raw] : removed again, seemed to mess things up in some wordpress sites.
+		return do_shortcode(ob_get_clean());
 	}
 }
 

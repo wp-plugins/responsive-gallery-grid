@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=j_col
 Tags: HTML5, gallery, Google+, responsive, pop-out
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv2 or later
 
 
@@ -21,7 +21,7 @@ Main features include:
 1. By default the images will pop out a whenever you move the cursor over them. The z-indexes are updating so that the pop-out images are always on top.
 1. The animation speed, scaling, margins and max row height are customizable in the `[gallery]` shortcode.
 
-A live example can be viewed at http://bdwm.be/rgg/sample-page/
+A live example can be viewed at http://bdwm.be/rgg/demo/
 
 Documentation available at http://bdwm.be/rgg/shortcode-parameters/
 
@@ -67,6 +67,17 @@ Sure. Please start a support thread for any of your requests.
 3. From the WYSIWYG view the gallery looks like an ordinary Wordpress gallery, so you can easily add and remove pictures the way you are used to.
 
 == Changelog ==
+
+= 1.2.2 =
+* escaped the captions so double quotes can be added in the caption text.
+* Added captions parameter to shortcode, so captions can be disabled.
+* Some bug fixes
+
+= 1.2.1 (May 6, 2013) =
+* Added captions in the title attribute of the anchor tags.
+
+= 1.2 (May 6, 2013) =
+* changed the way the plugin hooks to the native gallery, so other plugins can use it too.
 
 = 1.1 (May 2, 2013) =
 * Added a bunch of paramaters to the shortcode
