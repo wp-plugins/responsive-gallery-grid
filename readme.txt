@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=j_col
 Tags: HTML5, gallery, Google+, responsive, pop-out
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 License: GPLv2 or later
 
 
@@ -68,7 +68,10 @@ Sure. Please start a support thread for any of your requests.
 
 == Changelog ==
 
-= 1.2.2 =
+= 1.2.3 (May 7, 2013) =
+* Included padding and borders into the calculations, so the grid won't break if one of those are added to the images.
+
+= 1.2.2 (May 6, 2013) =
 * escaped the captions so double quotes can be added in the caption text.
 * Added captions parameter to shortcode, so captions can be disabled.
 * Some bug fixes

@@ -73,7 +73,7 @@
                 var ratio = ratios[i];
                 
                 var $tile = jQuery(tile);
-                var width = Math.ceil(maxrowheight * ratio);
+                var width = Math.ceil(maxrowheight * ratio) ;
                 
                 $row = $row.add(tile);
                 
@@ -93,7 +93,8 @@
                     var totalWidth = 0;
                     $row.each(function() { // debug.
                         var realwidth = jQuery(this).width();
-                        totalWidth += realwidth + margin;
+                        var outerwidth = jQuery(this).outerWidth();
+                        totalWidth += outerwidth + margin;
                         jQuery(this).css({ 'width' : realwidth });
                     });
                     totalWidth -= margin;
