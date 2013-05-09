@@ -2,7 +2,7 @@
     Gallery Grid jQuery Plugin
     (c) 2013 bdwm.be
     For any questions please email me at jules@bdwm.be
-    Version: 1.0
+    Version: 1.1
 */
 
 ;(function($){
@@ -70,6 +70,7 @@
             
             jQuery.each($tiles, function(i,tile) {
                 
+                // TODO: take into account borders and padding to calculate the ratio's aswell
                 var ratio = ratios[i];
                 
                 var $tile = jQuery(tile);
@@ -79,7 +80,11 @@
                 
                 currentgroupwidth += width;
                 
-                if (currentgroupwidth >= containerwidth) {
+                if (currentgroupwidth >= containerwidth) { 
+                    
+                    // Get the right height for all images, so the width nicely fits the container.
+                    
+                    
                     var ratio2 = currentgroupwidth / containerwidth ;
                     //console.log(currentgroupwidth + ' / ' + containerwidth + ' = ' + ratio2);
                     //console.log($row);

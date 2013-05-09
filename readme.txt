@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=j_col
 Tags: HTML5, gallery, Google+, responsive, pop-out
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 License: GPLv2 or later
 
 
@@ -67,6 +67,9 @@ Sure. Please start a support thread for any of your requests.
 3. From the WYSIWYG view the gallery looks like an ordinary Wordpress gallery, so you can easily add and remove pictures the way you are used to.
 
 == Changelog ==
+
+= 1.2.4 (May 9, 2013) =
+* Only load the javascript and CSS files if there actually are galleries on the page. Before, this could cause javascript warnings and errors on pages without a Responsive Gallery Grid on them.
 
 = 1.2.3 (May 7, 2013) =
 * Included padding and borders into the calculations, so the grid won't break if one of those are added to the images.

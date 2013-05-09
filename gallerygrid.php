@@ -6,7 +6,7 @@ Plugin URI: http://bdwm.be/rgg
 Description: Converts the default wordpress gallery to a Google+ styled image gallery grid, where the images are scaled to fill the gallery container, while maintaining image aspect ratio's.
 Author: Jules Colle, BDWM
 Author URI: http://bdwm.be
-Version: 1.2.3
+Version: 1.2.4
 
 Copyright 2013 Jules Colle (email : jules@bdwm.be)
 
@@ -43,13 +43,12 @@ function rgg_gallery_shortcode($output, $attr) {
         'captions' => 'title'
     ), $attr);
 	
-	extract($settings_arr);
-	$all_settings[] = $settings_arr;
-	
 	if ($type == 'native') {
 		return ''; //gallery_shortcode($attr);
 	} else {
 		
+		extract($settings_arr);
+		$all_settings[] = $settings_arr;
 		
 		$media_ids = explode(',', $ids);
 		if (count($media_ids) == 0) {
@@ -93,14 +92,16 @@ add_filter( 'post_gallery', 'rgg_gallery_shortcode', 9, 2 );
 function rgg_register_scripts() {
 	global $all_settings;
 	
+	if (count($all_settings) == 0) return;
+	
 	// enqueue css
 	wp_register_style( 'rgg-style', plugins_url('css/style.css', __FILE__) );
 	wp_enqueue_style( 'rgg-style' );
 	
 	// enqueue scripts
 	wp_enqueue_script('imagesloaded', plugins_url( 'js/jquery.imagesloaded.min.js' , __FILE__ ), array('jquery'), '1', false );
-	wp_enqueue_script('gallerygrid', plugins_url( '/js/jquery.gallerygrid.js' , __FILE__ ), array('imagesloaded'), '1.0.0', false );
-	wp_enqueue_script('rgg-main', plugins_url( '/js/main.js' , __FILE__ ), array('gallerygrid'), '1.0.0', false );
+	wp_enqueue_script('gallerygrid', plugins_url( '/js/jquery.gallerygrid.js' , __FILE__ ), array('imagesloaded'), '1.2.4', false );
+	wp_enqueue_script('rgg-main', plugins_url( '/js/main.js' , __FILE__ ), array('gallerygrid'), '1.2.4', false );
 	
 	// pass shortcode parameters to main script also
 	wp_localize_script( 'rgg-main', 'rgg_params', $all_settings );	
