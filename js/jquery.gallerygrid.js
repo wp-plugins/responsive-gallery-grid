@@ -2,7 +2,7 @@
     Gallery Grid jQuery Plugin
     (c) 2013 bdwm.be
     For any questions please email me at jules@bdwm.be
-    Version: 1.1
+    Version: 1.3
 */
 
 ;(function($){
@@ -61,7 +61,7 @@
             $tiles.css({'margin-right' : margin, 'height':maxrowheight, 'width' : 'auto', position:'relative'}); // reset the margins.
             
             $container.width('100%');
-            var containerwidth = jQuery('.rgg_imagegrid').width();
+            var containerwidth = $container.width();
             //console.log('container: ' + containerwidth);
             
             var rows = [];
@@ -76,9 +76,14 @@
                 var $tile = jQuery(tile);
                 var width = Math.ceil(maxrowheight * ratio) ;
                 
+                var extraWidth = $tile.outerWidth() - $tile.width();
+                
                 $row = $row.add(tile);
                 
-                currentgroupwidth += width;
+                currentgroupwidth += width; // the image width gets added to the current group
+                containerwidth -= extraWidth; // the borders and padding get substracted from the container width
+                
+                console.log('currentgroupwidth: ' + currentgroupwidth + " - containerwidth: " + containerwidth + " - extraWidth: " + extraWidth);
                 
                 if (currentgroupwidth >= containerwidth) { 
                     
@@ -96,21 +101,26 @@
                     $row.height(newHeight);
                     
                     var totalWidth = 0;
-                    $row.each(function() { // debug.
+                    $row.each(function(i) { // debug.
+                        if ($row.length-1 == i) return; //skip last one
                         var realwidth = jQuery(this).width();
-                        var outerwidth = jQuery(this).outerWidth();
-                        totalWidth += outerwidth + margin;
+                        totalWidth += realwidth;
                         jQuery(this).css({ 'width' : realwidth });
                     });
-                    totalWidth -= margin;
                     
                     
-                    $tile.css({'margin-right' : 0, 'width' : $tile.width() + (containerwidth - totalWidth) - 1 });
+                    $tile.css({'margin-right' : 0, 'width': containerwidth - totalWidth - 1});
+                    
+                    // reset everything for the next row.
                     
                     $row = jQuery();
                     currentgroupwidth = 0;
+                    containerwidth = $container.width();
                 } else {
-                    currentgroupwidth += margin;
+                    containerwidth -= margin; // the margin gets substracted from the container width
+                    
+                    //last image of the grid should never have a right margin
+                    if ($tiles.length-1 == i) $tile.css('margin-right',0);
                 }
             });
         } 

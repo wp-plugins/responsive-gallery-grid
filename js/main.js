@@ -1,3 +1,10 @@
+/*
+    Gallery Grid Main Script
+    (c) 2013 bdwm.be
+    For any questions please email me at jules@bdwm.be
+    Version: 1.3
+*/
+
 var mobile =  /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
 var scale = parseFloat(rgg_params[0].scale) || 1.0;
 var intime = parseFloat(rgg_params[0].intime) || 100;
@@ -15,7 +22,7 @@ jQuery(document).ready(function(){
             var $this = jQuery(this);
             var offset = $this.position();
             $this.clone().addClass('bbg_placeholder').css({ visibility : 'hidden' }).appendTo($this.parent());
-            $this.css({ left:offset.left, top:offset.top, position: 'absolute' }).addClass('bbg_img');
+            $this.css({ left:offset.left, top:offset.top, position: 'absolute', 'max-width' : 'none' }).addClass('bbg_img');
         });
     
         jQuery('.rgg_imagegrid').each(function() {
