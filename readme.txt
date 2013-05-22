@@ -46,6 +46,13 @@ More options comming soon! Please start a support thread for any of your request
 Any way you would add a lightbox to the native wordpress gallery will work for Responsive Gallery Grid.
 One plugin I know that will work right out of the box is jQuery ColorBox. http://wordpress.org/extend/plugins/jquery-colorbox/
 
+= The images to the left and right of the grid are cut of when I mouse over them. How do I solve this? =
+
+This will happen if one of the grid containers have the CSS property <code>overflow:hidden</code>. If possible, you will
+need to change this to <code>overflow:visible</code>. If not, you can
+wrap the gallery inside a div, and assign some margins to it. If that's no option either, you should just disable scaling, or use negative scaling
+by setting the <code>scale</code> property to a value between 0.5 and 1 in the schortcode.
+
 = How can I further configure and modify the gallery to my needs? =
 
 Please take a look here: http://bdwm.be/rgg/shortcode-parameters/

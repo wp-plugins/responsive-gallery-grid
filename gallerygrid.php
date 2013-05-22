@@ -35,19 +35,20 @@ function rgg_gallery_shortcode($output, $attr) {
         'rel' => 'rgg',
         'image_size' => 'medium',
         'ids' => '',
-        'margin' => 10,
-        'scale' => 1.2,
+        'margin' => 2,
+        'scale' => 1.1,
         'maxrowheight' => 200,
         'intime' => 100,
         'outtime' => 100,
         'captions' => 'title'
     ), $attr);
 	
+	extract($settings_arr);
+	
 	if ($type == 'native') {
 		return ''; //gallery_shortcode($attr);
 	} else {
 		
-		extract($settings_arr);
 		$all_settings[] = $settings_arr;
 		
 		$media_ids = explode(',', $ids);
