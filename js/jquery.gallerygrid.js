@@ -2,7 +2,7 @@
     Gallery Grid jQuery Plugin
     (c) 2013 bdwm.be
     For any questions please email me at jules@bdwm.be
-    Version: 1.3
+    Version: 1.3.1
 */
 
 ;(function($){
@@ -67,6 +67,7 @@
             var rows = [];
             var currentgroupwidth = 0;
             var $row = jQuery();
+            var newHeight;
             
             jQuery.each($tiles, function(i,tile) {
                 
@@ -94,7 +95,7 @@
                     //console.log(currentgroupwidth + ' / ' + containerwidth + ' = ' + ratio2);
                     //console.log($row);
                     
-                    var newHeight = Math.floor(maxrowheight/ratio2);
+                    newHeight = Math.floor(maxrowheight/ratio2);
                     
                     //console.log(maxrowheight + ' / ' + ratio2 + ' = ' + newHeight);
                     
@@ -119,8 +120,14 @@
                 } else {
                     containerwidth -= margin; // the margin gets substracted from the container width
                     
-                    //last image of the grid should never have a right margin
-                    if ($tiles.length-1 == i) $tile.css('margin-right',0);
+                    // Do some special stuff if it's the last image
+                    if ($tiles.length-1 == i) {
+                        // Last image of the grid should never have a right margin
+                        $tile.css('margin-right',0);
+                        
+                        // Last row should have the same height as the previous row, to get prettier results, if all images have the same size :)
+                        $row.height(newHeight);
+                    }
                 }
             });
         } 

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=j_col
 Tags: HTML5, gallery, Google+, responsive, pop-out
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 1.3
+Stable tag: 1.3.1
 License: GPLv2 or later
 
 
@@ -65,15 +65,23 @@ Sure. Please start a support thread for any of your requests.
 
 == Upgrade Notice ==
 
-1. Nothing for now
+1. RGG now uses native gallery features to retrieve the images, this means you can no longer add multiple instances of the same image to a single gallery. If you need this feature, please revert to version 1.3.
 
 == Screenshots ==
 
-1. Responsive Gallery Grid in action. By default the images will pop out on mouse-over.
+1. Responsive Gallery Grid in action. By default the images will pop out on mouse-over. <a href="http://bdwm.be/rgg/demo" title="demo">Live example</a>.
 2. The gallery shortcode can be extended with some options, from the text editor.
 3. From the WYSIWYG view the gallery looks like an ordinary Wordpress gallery, so you can easily add and remove pictures the way you are used to.
 
 == Changelog ==
+
+= 1.3.1 (May 29, 2013) =
+* Changed character encoding for captions, to include special characters. With thanks to Niko.
+* The last row of the gallery is now always equal to the height of the previous row. This will generate prettier results if you use images with the same dimensions, like logo's.
+* New parameter, <a href="http://bdwm.be/rgg/shortcode-parameters/#orderby"><code>orderby</code></a>, allows you to order images by title, publish date, or even <a href="http://bdwm.be/rgg/somewhat-more-advanced-examples/#random">randomly</a>
+* More new parameters added. <a href="http://bdwm.be/rgg/shortcode-parameters/#order"><code>order</code></a>, <a href="http://bdwm.be/rgg/shortcode-parameters/#id"><code>id</code></a>, <a href="http://bdwm.be/rgg/shortcode-parameters/#size"><code>size</code></a>, <a href="http://bdwm.be/rgg/shortcode-parameters/#include"><code>include</code></a>, <a href="http://bdwm.be/rgg/shortcode-parameters/#exclude"><code>exclude</code></a> 
+* The <code>image_size</code> parameter is deprecated. It will still work, but it's better to use <a href="http://bdwm.be/rgg/shortcode-parameters/#size"><code>size</code></a> instead.
+* Some bug fixes
 
 = 1.3 (May 13, 2013) =
 * Fixed so many bugs I can't remember which ones anymore.
@@ -106,5 +114,3 @@ Sure. Please start a support thread for any of your requests.
 
 = 0.1 (April 26, 2013) =
 * First release
-
-== Arbitrary section ==
