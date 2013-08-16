@@ -10,8 +10,6 @@
     $.fn.gallerygrid = function(settings){
         settings = $.extend({}, $.fn.gallerygrid.defaults, settings);
         $.fn.gallerygrid.settings = settings;
-        //console.log('gallery grid working');
-        console.log(settings);
         
         var maxrowheight = settings.maxrowheight;
         var margin = settings.margin;
@@ -62,7 +60,6 @@
             
             $container.width('100%');
             var containerwidth = $container.width();
-            //console.log('container: ' + containerwidth);
             
             var rows = [];
             var currentgroupwidth = 0;
@@ -83,22 +80,16 @@
                 
                 currentgroupwidth += width; // the image width gets added to the current group
                 containerwidth -= extraWidth; // the borders and padding get substracted from the container width
-                
-                console.log('currentgroupwidth: ' + currentgroupwidth + " - containerwidth: " + containerwidth + " - extraWidth: " + extraWidth);
-                
+                                
                 if (currentgroupwidth >= containerwidth) { 
                     
                     // Get the right height for all images, so the width nicely fits the container.
                     
                     
                     var ratio2 = currentgroupwidth / containerwidth ;
-                    //console.log(currentgroupwidth + ' / ' + containerwidth + ' = ' + ratio2);
-                    //console.log($row);
                     
                     newHeight = Math.floor(maxrowheight/ratio2);
-                    
-                    //console.log(maxrowheight + ' / ' + ratio2 + ' = ' + newHeight);
-                    
+                                        
                     $row.height(newHeight);
                     
                     var totalWidth = 0;
