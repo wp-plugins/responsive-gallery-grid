@@ -3,7 +3,7 @@ Contributors: Jules Colle
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=j_colle%40hotmail%2ecom&lc=US&item_name=Jules%20Colle%20%2d%20WP%20plugins%20%2d%20Responsive%20Gallery%20Grid&item_number=rgg&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: HTML5, gallery, Google+, responsive, pop-out
 Requires at least: 3.0
-Tested up to: 3.9
+Tested up to: 4.1.1
 Stable tag: 1.3.3
 License: GPLv2 or later
 
