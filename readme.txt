@@ -75,6 +75,9 @@ Sure. Please start a support thread for any of your requests.
 
 == Changelog ==
 
+= 1.3.4 (February 25, 2015) =
+* No code changes. Only made sure that the plugin works in WordPress 4.1.1
+
 = 1.3.3 (April 18, 2014) =
 * Got rid of a bug caused by WP 3.9
 
